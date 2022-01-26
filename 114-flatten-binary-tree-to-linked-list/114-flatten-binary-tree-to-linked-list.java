@@ -23,11 +23,11 @@ class Solution {
         
         head = root;
         templeft = seedhakarna(root.left);
+        root.left = null;
         TreeNode aaega = new TreeNode();
         aaega = head;
         tempright = seedhakarna(root.right);
         
-        root.left = null;
         root.right = templeft;
         aaega.right = tempright;
         return root;
