@@ -1,6 +1,6 @@
 class Solution {
     public int rob(int[] nums) {
-        int choriki = nums[0];
+                int choriki = nums[0];
         int nhiki = 0;
         for(int i=1;i<nums.length;i++){
             int maal = nums[i];
@@ -13,6 +13,5 @@ class Solution {
             nhiki = dobaranhiki;
         }
         return choriki;
-        
     }
 }
