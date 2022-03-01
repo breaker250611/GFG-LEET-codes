@@ -5,19 +5,19 @@
 <p>&nbsp;</p>
 <p><strong>Example 1:</strong></p>
 
-<pre style="position: relative;"><strong>Input:</strong> salary = [4000,3000,1000,2000]
+<pre><strong>Input:</strong> salary = [4000,3000,1000,2000]
 <strong>Output:</strong> 2500.00000
 <strong>Explanation:</strong> Minimum salary and maximum salary are 1000 and 4000 respectively.
 Average salary excluding minimum and maximum salary is (2000+3000) / 2 = 2500
-<div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre>
+</pre>
 
 <p><strong>Example 2:</strong></p>
 
-<pre style="position: relative;"><strong>Input:</strong> salary = [1000,2000,3000]
+<pre><strong>Input:</strong> salary = [1000,2000,3000]
 <strong>Output:</strong> 2000.00000
 <strong>Explanation:</strong> Minimum salary and maximum salary are 1000 and 3000 respectively.
 Average salary excluding minimum and maximum salary is (2000) / 1 = 2000
-<div class="open_grepper_editor" title="Edit &amp; Save To Grepper"></div></pre>
+</pre>
 
 <p>&nbsp;</p>
 <p><strong>Constraints:</strong></p>
