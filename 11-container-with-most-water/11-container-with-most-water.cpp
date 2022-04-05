@@ -6,7 +6,9 @@ public:
         int mxarea = 0;
         while(lo<hi){
             int temp = min(height[lo],height[hi]);
-            int temparea = temp*(hi-lo);
+            int diff = hi-lo;
+            if(diff==0)diff++;
+            int temparea = temp*diff;
             mxarea = max(mxarea,temparea);
             if(height[lo]>height[hi])hi--;
             else lo++;
