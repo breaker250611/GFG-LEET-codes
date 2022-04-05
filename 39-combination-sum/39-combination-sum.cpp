@@ -25,7 +25,7 @@ public:
     void  karlunga(vector<int>&coin , int target,vector<vector<int>>&ans,vector<int>temp,vector<int>&dp,int i){
         
             if(target==0){
-                sort(temp.begin(),temp.end());
+                // sort(temp.begin(),temp.end());
                 ans.push_back(temp);
             }
         
