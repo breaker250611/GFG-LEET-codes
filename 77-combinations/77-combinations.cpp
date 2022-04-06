@@ -16,6 +16,8 @@ public:
             return;
             
         }
+        if ((nums.size()-i+1) < (k-csf))
+            return;
         
         for(i;i<nums.size();i++){
             
