@@ -12,8 +12,8 @@ class Solution {
 
         int r = -1;
         int c = -1;
-        if(j==9) return;
-        if (j == n-1) {
+     
+        if (j == n) {
             r = i + 1;
             c = 0;
         }
