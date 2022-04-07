@@ -12,7 +12,7 @@ public:
         }
         int nayai ;
         int nayaj ;
-        if(j==board[0].size()){
+        if(j==board[0].size()-1){
             nayai = i+1;
             nayaj = 0;
         }
