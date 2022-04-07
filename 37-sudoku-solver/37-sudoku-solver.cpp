@@ -21,7 +21,7 @@ public:
             nayaj = j+1;
         }
         
-        if(board.at(i).at(j)!='.') solve(board,nayai,nayaj);
+        if(board[i][j]!='.') solve(board,nayai,nayaj);
         else{
             for(char no = 1;no<=9;no++){
                 if(sahihai(board,i,j,no)){
