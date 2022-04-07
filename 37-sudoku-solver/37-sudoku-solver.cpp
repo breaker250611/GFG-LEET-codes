@@ -1,21 +1,12 @@
 class Solution {
 public:
     vector<vector<char>>ans;
-    void solveSudoku(vector<vector<char>>& board) {
-        // ans.clear;
-        
+    void solveSudoku(vector<vector<char>>& board) {        
         solve(board,0,0);
         board = ans;
     }
     void solve(vector<vector<char>>&board,int i,int j){
         if(i==board.size()) {
-            for(int x = 0;x<board.size();x++){
-                for(int y = 0;y<board[0].size();y++){
-                    cout<<board[x][y]<<" ";
-                    
-                }
-                cout<<endl;
-            }
             ans = board;
             return;
         }
