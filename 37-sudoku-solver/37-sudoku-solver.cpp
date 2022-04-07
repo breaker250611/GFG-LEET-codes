@@ -12,7 +12,7 @@ public:
         }
         int nayai ;
         int nayaj ;
-        if(j==board[0].size()){
+        if(j==board[0].size()-1){
             nayai = i+1;
             nayaj = 0;
         }
@@ -21,7 +21,7 @@ public:
             nayaj = j+1;
         }
         
-        if(board[i][j]!='.') solve(board,nayai,nayaj);
+        if(board.at(i).at(j)!='.') solve(board,nayai,nayaj);
         else{
             for(char no = 1;no<=9;no++){
                 if(sahihai(board,i,j,no)){
