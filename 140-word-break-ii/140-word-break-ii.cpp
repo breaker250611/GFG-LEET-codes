@@ -21,7 +21,6 @@ public:
         for(int j = i;j<s.size();j++){
             string abhi = s.substr(i,j-i+1);
             if(mp.find(abhi)!=mp.end()){
-                // int bada = s.substr(j+1);
                 karbhaicall(s,ans,psf+abhi+" ",j+1);
             }
         }
