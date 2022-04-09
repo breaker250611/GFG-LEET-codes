@@ -3,19 +3,12 @@ public:
     int lastStoneWeightII(vector<int>& stones) {
       int sum = accumulate(stones.begin(),stones.end(),0);
       int ans = 0;
-        for(int i =0;i<=sum;i++){
-          if((sum+i)%2==0){
-              if(check(stones,(sum+i)/2)){
-                  ans = i;
-              break;
-              }
-          }
-      }
+       ans = check(stones,sum);
         return ans;
     
     }
     
-    bool check(vector<int>& nums,int sum){
+    int check(vector<int>& nums,int sum){
                 vector<vector<int>>dp(nums.size()+1,vector<int>(sum+1,0));
 
         for(int i = 0;i<=nums.size();i++){
@@ -31,6 +24,13 @@ public:
                 }
             }
         }
-        return dp[nums.size()][sum];
+        int n = nums.size();
+        int ans = INT_MAX;
+        for(int i = 0;i<=sum;i++){
+            if(dp[n][i]){
+                ans = min(ans,abs(sum-(2*i)));
+            }
+        }
+        return ans;
     }
 };
