@@ -21,12 +21,6 @@ public:
                 }
             }
         }
-        // for(auto &x:dp){
-        //     for(auto &y:x){
-        //         cout<<y<<" ";
-        //     }
-        //     cout<<endl;
-        // }
         return dp[nums.size()][sum];
     }
 };
