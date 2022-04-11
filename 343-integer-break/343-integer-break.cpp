@@ -1,21 +1,27 @@
 class Solution {
 public:
+    
     int integerBreak(int n) {
         vector<int>nums;
-        for(int i = 1;i<n;i++) nums.push_back(i);
-        vector<int>dp(n+1,-1);
-        dp[0] = 1;
+        for(int i = 1;i<n;i++)nums.push_back(i);
+        vector<vector<int>>dp(nums.size()+1,vector<int>(n+1,-1));
+        int ans = call(n,nums,0,0,dp);
+    return ans;
+    }
+    
+    int call(int n,vector<int>& nums,int i,int sum, vector<vector<int>>&dp){
         
-        for(int i=1;i<=n;i++){
-            for(int j = 0;j<nums.size();j++){
-                int temp = nums[j];
-                if(temp<=i){
-                    dp[i] = max(dp[i],dp[i-temp]*temp);
-                }
-            }
+        if(sum==n){
+            return 1;
         }
-        for(auto &it:dp)cout<<it<<" ";
-        cout<<endl;
-        return dp[n];
+        else if(sum>n||i>=nums.size()) return 0;
+        
+        int &ans = dp[i][sum];
+        if(ans!=-1){
+            return ans;
+            }
+        else{
+            return ans = max(call(n,nums,i,sum+nums[i],dp)*nums[i],call(n,nums,i+1,sum,dp));
+        }
     }
 };
