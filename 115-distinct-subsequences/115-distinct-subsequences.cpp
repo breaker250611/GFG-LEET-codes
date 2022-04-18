@@ -7,7 +7,7 @@ public:
         
         for(int i = s.size()-1;i>=0;i--){
             for(int j = t.size();j>=0;j--){
-                if(j<t.size()&&s[i]==t[j]){
+                if(s[i]==t[j]){
                     dp[i][j] = dp[i+1][j+1]+dp[i+1][j];
                 }
                 else{
@@ -15,10 +15,6 @@ public:
                 }
             }
         }
-        // for(auto &it:dp){
-        //     for(auto&x:it)cout<<x<<" ";
-        //     cout<<endl;
-        // }
         return dp[0][0];
     }
 };
