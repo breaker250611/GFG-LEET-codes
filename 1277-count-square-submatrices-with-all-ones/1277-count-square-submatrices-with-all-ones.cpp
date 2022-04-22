@@ -15,10 +15,10 @@ public:
                 }
             }
         }
-        for(auto &it:matrix){
-            for(auto &x:it) cout<<x<<" ";
-            cout<<endl;
-        }
+        // for(auto &it:matrix){
+        //     for(auto &x:it) cout<<x<<" ";
+        //     cout<<endl;
+        // }
         return count;
     }
 };
