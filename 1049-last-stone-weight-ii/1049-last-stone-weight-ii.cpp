@@ -28,7 +28,7 @@ public:
         int ans = INT_MAX;
         for(int i = 0;i<=sum;i++){
             if(dp[n][i]){
-                ans = min(ans,abs(sum-(2*i)));
+                ans = min(ans,abs(sum-(i)-i));
             }
         }
         return ans;
