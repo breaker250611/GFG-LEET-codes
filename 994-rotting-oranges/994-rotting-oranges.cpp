@@ -11,7 +11,6 @@ public:
             for(int j = 0;j<m;j++){
                 if(grid[i][j]==2){
                   qu.push({i,j});
-                    // dist[i][j] = 0;
                 }    
             }
         }
