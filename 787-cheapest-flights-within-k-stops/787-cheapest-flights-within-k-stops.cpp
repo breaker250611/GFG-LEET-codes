@@ -21,8 +21,8 @@ public:
             int k = q.top().second.second;
             int d_v = q.top().first;
             q.pop();
-            if(d_v>=dist[v][k]) continue;
-                dist[v][k] = d_v;
+            if(d_v>dist[v][k]) continue;
+                // dist[v][k] = d_v;
              for(auto edge:adj[v]){
                 int to = edge.first;
                 int len = edge.second;
@@ -30,6 +30,7 @@ public:
             
 
                 if(d_v+ len <dist[to][k-1]){
+                    dist[to][k-1] = d_v + len;
                     q.push({d_v+len,{to,k-1}});
                 }
             }
