@@ -27,12 +27,9 @@ public:
                 int to = edge.first;
                 int len = edge.second;
                  if(k==0) continue;
-                 // if(k<0) break;
             
 
                 if(d_v+ len <dist[to][k-1]){
-                    // dist[to][k-1] = d_v +len;
-                    // parent[to ] = v;
                     q.push({d_v+len,{to,k-1}});
                 }
             }
