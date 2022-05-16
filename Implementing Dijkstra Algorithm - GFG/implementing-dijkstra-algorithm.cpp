@@ -21,7 +21,7 @@ class Solution
         int prnt = q.top().second;
         int abhidistance = q.top().first;
         q.pop();
-        if(abhidistance < distance[prnt]){
+        if(abhidistance > distance[prnt]){
             continue;
         }
         for(auto edge :adj[prnt]){
