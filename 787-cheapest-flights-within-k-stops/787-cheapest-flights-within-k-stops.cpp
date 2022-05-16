@@ -31,7 +31,7 @@ public:
 
                 if(d_v+ len <dist[to][k-1]){
                     dist[to][k-1] = d_v + len;
-                    q.push({d_v+len,{to,k-1}});
+                    q.push({dist[to][k-1],{to,k-1}});
                 }
             }
         
