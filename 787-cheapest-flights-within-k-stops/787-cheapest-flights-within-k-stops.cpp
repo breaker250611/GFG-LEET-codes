@@ -33,7 +33,7 @@ public:
                 if(d_v+ len <dist[to][k-1]){
                     // dist[to][k-1] = d_v +len;
                     // parent[to ] = v;
-                    if(k>0){q.push({d_v+len,{to,k-1}});}
+                    q.push({d_v+len,{to,k-1}});
                 }
             }
         
