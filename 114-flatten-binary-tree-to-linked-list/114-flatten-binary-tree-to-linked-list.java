@@ -14,29 +14,27 @@
  * }
  */
 class Solution {
-    public TreeNode head = new TreeNode();
-    public TreeNode seedhakarna(TreeNode root){
-        
-        if(root ==null) return root;
-        TreeNode templeft = new TreeNode();
-        TreeNode tempright = new TreeNode();
-        
-        head = root;
-        templeft = seedhakarna(root.left);
-        root.left = null;
-        TreeNode aaega = new TreeNode();
-        aaega = head;
-        tempright = seedhakarna(root.right);
-        
-        root.right = templeft;
-        aaega.right = tempright;
-        return root;
-        
-        
-    }
     public void flatten(TreeNode root) {
-        // TreeNode head = new TreeNode();
-        root = seedhakarna(root);
+        if (root == null) {
+            return;
+        }
+        
+        if (root.left != null) {
+            TreeNode startLeft = root.left; 
+            TreeNode endLeft = root.left; 
+            TreeNode connectWithRight = root.right; 
+            
+            while (endLeft.right != null) {
+                endLeft = endLeft.right;
+            }
+            
+            root.right = startLeft; 
+            endLeft.right = connectWithRight;
+            root.left = null; 
+        }
+        
+        flatten(root.left); 
+        flatten(root.right); 
         
     }
 }
