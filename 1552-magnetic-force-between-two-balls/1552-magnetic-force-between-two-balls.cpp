@@ -17,15 +17,15 @@ public:
         int lo = 1;
         int hi = position[position.size()-1];
         
-        while(lo+1<hi){
+        while(lo<=hi){
             int mid = lo +(hi-lo)/2;
             if(bansaktahai(position,m,mid)){
-                lo = mid;
+                lo = mid+1;
             }
             else{
-                hi  = mid;
+                hi  = mid-1;
             }
         }
-        return lo;
+        return hi;
     }
 };
