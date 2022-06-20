@@ -6,6 +6,7 @@ public:
             return 0;
         }
         if(dp[i][size] != -1){
+         
             return dp[i][size];
         }
         int no = f(i-1,size,sum,s,dp);
@@ -19,7 +20,8 @@ public:
         
         int n = s.size();
         vector<vector<int>>dp(n,vector<int>(n,-1));
-        return f(n-1,0,k,s,dp);
-        
+        int i= f(n-1,0,k,s,dp);
+        cout<<"i="<<i<<endl;
+        return i;
     }
 };
