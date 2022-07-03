@@ -15,8 +15,8 @@ public:
                 }
             }
         }
-        for(auto &it:dp)cout<<" "<<it<<" ";
-        cout<<endl;
+        // for(auto &it:dp)cout<<" "<<it<<" ";
+        // cout<<endl;
         return dp[days.back()];
     }
 };
