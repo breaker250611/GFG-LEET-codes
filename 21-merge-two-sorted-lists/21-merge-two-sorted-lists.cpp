@@ -21,16 +21,12 @@ public:
             
             if(list1==nullptr){
                     naya->next = list2;
-                list2 = list2->next;
-                // naya = naya->next;
-
+                    list2 = list2->next;
             }
             else if(list2==nullptr){
                     naya->next = list1;
-                list1 = list1->next;
-                            // naya = naya->next;
-
-            }
+                    list1 = list1->next;
+            }  
             else{
                 if(list1->val>=list2->val){
                     naya->next = list2;
@@ -38,13 +34,12 @@ public:
                 }
                 else{
                     naya->next = list1;
-                  list1 = list1->next;
+                    list1 = list1->next;
                   
                 }
-                 // naya = naya->next;
 
             }
-                        naya = naya->next;
+              naya = naya->next;
 
         }
         return head->next;
