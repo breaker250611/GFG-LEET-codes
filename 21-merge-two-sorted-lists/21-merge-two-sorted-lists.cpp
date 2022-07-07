@@ -18,27 +18,32 @@ public:
         ListNode* head = naya;
         
         while(list1!=nullptr || list2!= nullptr){
-            naya->next = new ListNode();
-            naya = naya->next;
+            // naya->next = new ListNode();
             
             if(list1==nullptr){
-                    naya->val = list2->val;
+                    naya->next = list2;
                 list2 = list2->next;
+                            naya = naya->next;
+
             }
             else if(list2==nullptr){
-                    naya->val = list1->val;
+                    naya->next = list1;
                 list1 = list1->next;
+                            naya = naya->next;
+
             }
             else{
                 if(list1->val>=list2->val){
-                    naya->val = list2->val;
+                    naya->next = list2;
                     list2 = list2->next;
                 }
                 else{
-                    naya->val = list1->val;
+                    naya->next = list1;
                   list1 = list1->next;
                   
                 }
+                 naya = naya->next;
+
             }
         }
         return head->next;
