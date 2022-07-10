@@ -11,24 +11,36 @@
 class Solution {
 public:
     ListNode* swapNodes(ListNode* head, int k) {
-       vector<int>vp;
-        ListNode* n = head;
-        while(n!=nullptr){
-            vp.push_back(n->val);
-            n = n->next;
+        int count= 0;
+        
+        ListNode* head1 = head;
+        while(head!=nullptr){
+            count++;
+            head = head->next;
         }
-        // vp.swap(vp.begin()+k,vp.end()-k);
-        int last = vp.size()-k;
-        int temp = vp[k-1];
-        vp[k-1] = vp[last];
-        vp[last]=temp;
-        // for(auto &x:vp) cout<<x<<endl;
-        n =head;
-        int i = 0;
-        while(n!=nullptr){
-            n->val  = vp[i++];
-            n = n->next;
+        cout<<count<<endl;
+        head = head1;
+        int pehla = k-1;
+        int dusra = count-k;
+        ListNode*pehla1 = nullptr;
+        ListNode * dusra1 = nullptr;
+        
+        for(int i = 0;i<count;i++){
+            if(i==pehla){
+                pehla1 = head; 
+            }
+             if(i==dusra){
+                dusra1 = head;
+                
+               
+                
+            }
+            head = head->next;
         }
-    return head;
+         int temp = dusra1->val;
+                dusra1->val = pehla1->val;
+                pehla1->val = temp;
+        return head1;
+        
     }
 };
