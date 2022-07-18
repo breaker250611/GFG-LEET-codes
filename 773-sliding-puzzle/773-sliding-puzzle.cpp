@@ -1,3 +1,8 @@
+/*
+Used bfs , after changing the board in string to make it easier for visited array 
+jaha jaha ja sakta hai mera wo zero wo sab mai ek array mai store karlunga ..
+*/
+
 class Solution {
 public:
     int slidingPuzzle(vector<vector<int>>& board) {
