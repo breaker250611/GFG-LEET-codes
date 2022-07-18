@@ -39,8 +39,6 @@ public:
                     char ch = naya[idx];
                     naya[idx] = naya[temp[i]];
                     naya[temp[i]] = ch;
-                    // cout<<"str = "<< str<<endl;
-                    // cout<<"naya = "<<naya<<endl;
                     if(st.find(naya)!= st.end()) continue;
                     qu.push(naya);
                     st.insert(naya);
