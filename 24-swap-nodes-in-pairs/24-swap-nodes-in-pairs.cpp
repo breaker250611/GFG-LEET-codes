@@ -10,24 +10,23 @@
  */
 class Solution {
 public:
-ListNode* swapPairs(ListNode* head) {
-        if(!head || !head->next) return head; 
-		
-        ListNode* dummyNode = new ListNode();
+    ListNode* swapPairs(ListNode* head) {
+        if(head==NULL) return head;
+     ListNode* dummy = new ListNode(0);
+        dummy->next = head;
+     ListNode* curr = dummy;
+        ListNode* next = head->next;
         
-        ListNode* prevNode=dummyNode;
-        ListNode* currNode=head;
-        
-        while(currNode && currNode->next){
-            prevNode->next = currNode->next;
-            currNode->next = prevNode->next->next;
-            prevNode->next->next = currNode;
-            
-            prevNode = currNode;
-            currNode = currNode->next;
+        while(head!=nullptr && head->next!=nullptr){
+            curr->next = next;
+            head->next = next->next;
+            next->next = head;
+            curr = head;
+            head = head->next;
+            if(head==nullptr)break;
+            next = head->next;
         }
+        return dummy->next;
         
-        return dummyNode->next;
     }
-
 };
