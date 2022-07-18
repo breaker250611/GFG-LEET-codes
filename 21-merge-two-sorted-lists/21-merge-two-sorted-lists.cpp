@@ -14,32 +14,32 @@ public:
         if(list1==nullptr)return list2;
         if(list2==nullptr)return list1;
         
-        ListNode* naya = new ListNode();
-        ListNode* head = naya;
+        ListNode* dumy = new ListNode();
+        ListNode* head = dumy;
         
         while(list1!=nullptr || list2!= nullptr){
             
             if(list1==nullptr){
-                    naya->next = list2;
+                    dumy->next = list2;
                     list2 = list2->next;
             }
             else if(list2==nullptr){
-                    naya->next = list1;
+                    dumy->next = list1;
                     list1 = list1->next;
             }  
             else{
                 if(list1->val>=list2->val){
-                    naya->next = list2;
+                    dumy->next = list2;
                     list2 = list2->next;
                 }
                 else{
-                    naya->next = list1;
+                    dumy->next = list1;
                     list1 = list1->next;
                   
                 }
 
             }
-              naya = naya->next;
+              dumy = dumy->next;
 
         }
         return head->next;
