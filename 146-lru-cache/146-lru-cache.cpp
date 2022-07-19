@@ -9,9 +9,9 @@
             next = NULL;
             prev = NULL;
         }
-        Node(int key,int value){
-            this->key = key;
-            this->val = value;
+        Node(int key1,int value){
+            key = key1;
+            val = value;
             next = NULL;
             prev = NULL;
         }
