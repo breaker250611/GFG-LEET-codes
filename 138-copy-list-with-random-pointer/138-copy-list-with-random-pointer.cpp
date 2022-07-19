@@ -16,20 +16,45 @@ public:
 
 class Solution {
 public:
+    void attach(Node *head){
+        Node *temp = head;
+        while (temp){
+            Node *nxt = temp->next;
+            temp->next = new Node(temp->val);
+            temp->next->next = nxt;
+            temp = nxt;
+        }
+    }
+    
+    void attachrandom(Node *head){
+        Node *temp = head;
+        while (temp){
+            if (temp->random){
+                temp->next->random = temp->random->next;
+            }
+            temp = temp->next->next;
+        }
+    }
+    
+    Node* attachnext(Node *head){
+        Node *temp = head;
+        Node *ans = head->next;
+        while (temp and temp->next){
+            Node *nxt = temp->next;
+            temp->next = nxt->next;
+            temp = nxt;
+        }
+        return ans;
+    }
+    
     Node* copyRandomList(Node* head) {
-        map<Node* , Node*> m;
-        Node* temp = head;
-        while(temp!=NULL){
-            Node* copy = new Node(temp->val);
-            m[temp] = copy;
-            temp = temp->next;
-        }
-        temp = head;
-        while(temp!=NULL){
-            m[temp]->next = m[temp->next];
-            m[temp]->random = m[temp->random];
-            temp = temp->next;
-        }
-        return m[head];
+        
+        if (!head)
+            return NULL;
+        
+        attach(head);
+        attachrandom(head);
+        Node* ok = attachnext(head);
+        return ok;
     }
 };
