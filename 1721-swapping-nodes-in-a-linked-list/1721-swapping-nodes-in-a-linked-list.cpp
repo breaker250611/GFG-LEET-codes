@@ -11,36 +11,26 @@
 class Solution {
 public:
     ListNode* swapNodes(ListNode* head, int k) {
-        int count= 0;
+                ListNode *slow = head;
+        ListNode *ptr = head;
+        ListNode *first = NULL;
         
-        ListNode* head1 = head;
-        while(head!=nullptr){
-            count++;
-            head = head->next;
+        for (int i = 1 ; i <= k ; i++){
+            first = ptr;
+            ptr = ptr->next;
         }
-        cout<<count<<endl;
-        head = head1;
-        int pehla = k-1;
-        int dusra = count-k;
-        ListNode*pehla1 = nullptr;
-        ListNode * dusra1 = nullptr;
         
-        for(int i = 0;i<count;i++){
-            if(i==pehla){
-                pehla1 = head; 
-            }
-             if(i==dusra){
-                dusra1 = head;
-                
-               
-                
-            }
-            head = head->next;
+        
+        if (!ptr){
+            swap(head->val , first->val);
+            return head;
         }
-         int temp = dusra1->val;
-                dusra1->val = pehla1->val;
-                pehla1->val = temp;
-        return head1;
         
+        while (ptr){
+            ptr = ptr->next;
+            slow = slow->next;
+        }
+        swap(first->val , slow->val);
+        return head;
     }
 };
