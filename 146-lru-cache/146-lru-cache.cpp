@@ -1,7 +1,8 @@
 
 class LRUCache {
    public:
-    struct Node{
+    class Node{
+        public:
         int key;
         int val;
         Node *next;
