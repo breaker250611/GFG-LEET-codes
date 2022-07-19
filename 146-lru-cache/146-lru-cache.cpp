@@ -10,8 +10,8 @@
             prev = NULL;
         }
         Node(int key1,int value){
-            key = key1;
-            val = value;
+            this->key = key1;
+            this->val = value;
             next = NULL;
             prev = NULL;
         }
