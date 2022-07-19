@@ -1,4 +1,7 @@
- struct Node{
+
+class LRUCache {
+   public:
+    struct Node{
         int key;
         int val;
         Node *next;
@@ -16,8 +19,6 @@
             prev = NULL;
         }
     };
-class LRUCache {
-    private : 
     int cap;
     unordered_map<int,Node*> mp;
     Node *head = new Node();
@@ -33,8 +34,8 @@ class LRUCache {
         node->next->prev = node->prev;
         node->prev->next = node->next;
     }
-public:
-   
+
+    
     LRUCache(int capacity) {
         cap = capacity;
         head ->next = tail;
