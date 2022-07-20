@@ -8,7 +8,7 @@ public:
     */
     bool isValid(string s) {
         stack<int>st;
-        map<char,int>mp = {{'(',1},{')',-1},{'[',2},{']',-2},{'{',3},{'}',-3}};
+        unordered_map<char,int>mp = {{'(',1},{')',-1},{'[',2},{']',-2},{'{',3},{'}',-3}};
         
         for(int i =0;i<s.size();i++){
             char ch = s[i];
