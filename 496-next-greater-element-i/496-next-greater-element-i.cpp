@@ -9,7 +9,7 @@ public:
         for(int i = nums2.size()-1;i>=0;i--){
             
             while(st.size()>0 and st.top()<nums2[i]){
-        cout<<"he";
+        // cout<<"he";
                 st.pop();
             }
             int mila = -1;
