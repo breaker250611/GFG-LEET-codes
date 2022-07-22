@@ -53,17 +53,17 @@ public:
         mp[key] = head->next;
     }
     
-    void add(Node *node) {
-        // temp->next = head->next;
-        // head->next->prev = temp;
-        // head->next = temp;
-        // temp->prev = head; 
+    void add(Node *temp) {
+        temp->next = head->next;
+        head->next->prev = temp;
+        head->next = temp;
+        temp->prev = head; 
         
-        Node *temp = head->next;
-        head->next = node;
-        node->prev = head;
-        node->next = temp;
-        temp->prev = node;
+        // Node *temp = head->next;
+        // head->next = node;
+        // node->prev = head;
+        // node->next = temp;
+        // temp->prev = node;
     }
     
     void remove(Node *temp) {
