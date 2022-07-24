@@ -1,23 +1,21 @@
 class Solution {
 public:
-    /*
-    sabke index daalte jao and compare karte jao
-    */
     int longestValidParentheses(string s) {
-        stack<int>st;
-        st.push(-1);
-        int maxi = 0;
+        vector<int>dp(s.size());
         
-        for(int i = 0;i<s.size();i++){
-            char ch = s[i];
-            if(ch =='(') st.push(i);
-            else {
-                    st.pop();
-                if(st.size()>0){
-                    maxi = max(maxi,i-st.top());
-                }else{
-                    st.push(i);
+        int maxi = 0;
+        for(int i =1;i<s.size();i++){
+            if(s[i]==')'){
+                if(s[i-1]=='('){
+                    dp[i] = (i-2>=0?dp[i-2]:0)+2;
                 }
+                else {
+                    if(i-dp[i-1]>0 and s[i-dp[i-1]-1]=='('){
+                        dp[i] = dp[i-1]+((i-dp[i-1])>=2?dp[i-dp[i-1]-2]:0)+2;
+                    }
+                    
+                }
+                maxi = max(maxi,dp[i]);
             }
         }
         return maxi;
