@@ -1,5 +1,8 @@
 class Solution {
 public:
+    /*
+    sabke index daalte jao and compare karte jao
+    */
     int longestValidParentheses(string s) {
         stack<int>st;
         st.push(-1);
