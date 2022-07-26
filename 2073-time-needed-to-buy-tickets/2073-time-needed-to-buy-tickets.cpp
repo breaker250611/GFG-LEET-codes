@@ -1,19 +1,10 @@
 class Solution {
 public:
-    int timeRequiredToBuy(vector<int>& ts, int k) {
-        // support variables
-        int res = 0;
-        // running loops until we get all our tickets
-        while (ts[k]) {
-            // running one loop
-            for (int i = 0, lmt = ts.size(); i < lmt && ts[k]; i++) {
-                // decreasing one slot and increasing res, if the slot still queues
-                if (ts[i]) {
-                    ts[i]--;
-                    res++;
-                }
-            } 
+    int timeRequiredToBuy(vector<int>& A, int k) {
+        int ans = 0;
+        for (int i = 0; i < A.size(); ++i) {
+            ans += min(A[k] - (i > k), A[i]);
         }
-        return res;
+        return ans;
     }
 };
