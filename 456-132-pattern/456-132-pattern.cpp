@@ -26,7 +26,7 @@ while (!st.empty() && st.top() < nums[i]) {
                 st.pop();
             }
             
-            if (next < nums[i] && arr[i] < next) {
+            if (next < nums[i] && arr[i-1] < next) {
                 return true;
             }
             st.push(nums[i]);
