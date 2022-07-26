@@ -11,16 +11,16 @@
  */
 class Solution {
 public:
-    bool prefi(TreeNode* root,long long mini,long long  maxi){
+    bool dede(TreeNode* root,long maxi,long mini){
         if(root==nullptr) return true;
-        int lef = prefi(root->left,mini,root->val);
-        if(lef==false) return false;
-        int righ = prefi(root->right,root->val,maxi);
-        return (root->val>mini && root->val<maxi && lef && righ);
-   
+        
+        if(root->val>=maxi or root->val<=mini) return false;
+        
+        bool lef = dede(root->left,root->val,mini);
+        bool righ = dede(root->right,maxi,root->val);
+        return lef and righ;
     }
     bool isValidBST(TreeNode* root) {
-      bool ans =   prefi(root,-1e10,1e10);
-        return ans;
+        return dede(root,1e10,-1e10);
     }
 };
