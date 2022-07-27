@@ -9,30 +9,33 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+
 class Solution {
 public:
-    vector<TreeNode*> ans;
-    map<string , int> m;
-    
-    string func(TreeNode *root){
-       
-        if (!root){
-            return "#";
-        }
+vector<TreeNode*> ans;
+map<string,int>mp;
+    string postorder(TreeNode* root){
+        // L R N
         
-        string s = func(root->left) + "," + func(root->right) + "," + to_string(root->val);
+        if(root==NULL) return "#";
         
-        if (m.count(s)){
-            if (m[s] == 1)
-            ans.push_back(root);
+        
+        string str  =  postorder(root->left) + ","+ postorder(root->right)+ "," + to_string(root->val);
+        
+        if(mp.find(str)!=mp.end()){
+            if(mp[str]==1){
+                ans.push_back(root);
+            }
         }
-        m[s]++;
-        return s;
+        mp[str]++;
+        return str;
+        
     }
     
     vector<TreeNode*> findDuplicateSubtrees(TreeNode* root) {
-       string s;
-       func(root);
-       return ans;
+        ans.clear();
+        mp.clear();
+        postorder(root);
+        return ans;
     }
 };
