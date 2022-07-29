@@ -47,7 +47,7 @@ public:
         
         int x = postorder(root);
         // msum = max(x,msum);
-        return msum = (msum>1)?msum-1:msum;
+        return msum = (msum>0)?msum-1:msum;
         
     }
 };
