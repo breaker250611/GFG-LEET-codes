@@ -11,27 +11,43 @@
  */
 class Solution {
 public:
-    int maxi = 0;
-    int check(TreeNode* root){
-        if(root==nullptr) return 0;
+    int msum = 0;
+    int postorder(TreeNode* root){
+        if(root==nullptr ) return 0 ;
         
-        int lef = check(root->left);
-        int rig = check(root->right);
-        int fin_lef = 0;
-        int fin_rig = 0;
-        if(lef!=0 and root->val==root->left->val){
-            fin_lef = lef;
+        int lef = postorder(root->left);
+        int righ = postorder(root->right);
+        
+        if(lef==0 and righ==0) return 1;
+        else if(lef != 0 and righ != 0 ){
+            if(root->left->val==root->val and root->right->val == root->val){
+                msum = max(lef + righ+1,msum);
+                return max(lef,righ)+1;
+            }
+            else if(root->left->val == root->val) {msum = max(lef+1,msum) ; return lef+1;}
+            else if(root->right->val == root->val) {msum = max(msum,righ+1);return righ+1;}
+            else return 1;
+            
         }
-        if(rig!=0 and root->val==root->right->val){
-            fin_rig = rig;
+        else if(lef == 0){
+                if(root->right->val == root->val) {msum = max(msum,righ+1);return righ+1;}
+            else return 1;
+            
         }
-        maxi = max(maxi,fin_lef+fin_rig);
-        return max(fin_lef,fin_rig)+1;
+        else if(righ==0){
+            if(root->left->val == root->val) {msum = max(lef+1,msum) ; return lef+1;}
+            else return 1;
+        }
+        return msum;
         
     }
     int longestUnivaluePath(TreeNode* root) {
-        maxi = 0;
-        check(root);
-        return maxi;
+     if(root==nullptr)return 0;
+        msum = 0;
+        
+        int x = postorder(root);
+        // msum = max(x,msum);
+        return msum = (msum>1)?msum-1:msum;
+        
     }
 };
