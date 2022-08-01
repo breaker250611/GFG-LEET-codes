@@ -1,52 +1,73 @@
 class Solution {
-public:
-    vector<vector<char>>ans;
-    void solveSudoku(vector<vector<char>>& board) {        
-        solve(board,0,0);
-        board = ans;
+    public:
+    vector<vector<char>> board, ans;
+    int ROW;
+    int COL;
+
+    void print() {
+        for (int i= 0; i < ROW; i++) {
+            for (int j = 0; j < COL; j++) {
+                cout << board[i][j] << ' ';
+            } cout << '\n';
+        } cout << "\n\n";
+    } 
+    bool present(int row, int col, int value) {
+        for (int i = 0; i < COL; i++) {
+            if (board[row][i] - '0' == value) {
+                return true;
+            }
+        }
+
+        for (int i = 0; i < ROW; i++) {
+            if (board[i][col] - '0' == value) {
+                return true;
+            }
+        }
+        int chotai = row/3*3;
+        int chotaj = col/3*3;
+        for (int i = 0; i < 3 ; i++) {
+            for (int j = 0; j < 3 ; j++) {
+                if (board[chotai+i][chotaj+j] - '0' == value) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
-    void solve(vector<vector<char>>&board,int i,int j){
-        if(i==board.size()) {
+
+    void dfs(int row, int col) {
+        if (col >= COL) {
+            col = 0; 
+            row += 1; 
+        }
+
+        if (row == ROW) {
             ans = board;
             return;
         }
-        int nayai ;
-        int nayaj ;
-        if(j==board[0].size()-1){
-            nayai = i+1;
-            nayaj = 0;
-        }
-        else{
-            nayai = i;
-            nayaj = j+1;
-        }
-        
-        if(board[i][j]!='.') solve(board,nayai,nayaj);
-        else{
-            for(char no = 1;no<=9;no++){
-                if(sahihai(board,i,j,no)){
-                    board[i][j]=no+'0';
-                    solve(board,nayai,nayaj);
-                    board[i][j]='.';
+
+
+        if (board[row][col] != '.') {
+            dfs(row, col + 1);
+            return;
+        } else {
+            for (int value = 1; value <= 9; value ++) {
+                if (!present(row, col, value)) {
+                    // print();
+
+                    board[row][col] = value + '0';
+                    dfs(row, col + 1);
+                    board[row][col] = '.';
                 }
             }
         }
     }
-    bool sahihai(vector<vector<char>>&board,int i,int j,int num){
-        for(int y = 0;y<board[0].size();y++){
-            if(board[i][y]-'0'==(num)) return false;
-        }
-        for(int y = 0;y<board.size();y++){
-            if(board[y][j]-'0'==(num)) return false;
-        }
 
-        int chotai = i/3*3;
-        int chotaj  = j/3*3;
-        for(int a = 0;a<3;a++){
-            for(int b = 0;b<3;b++){
-                if(board[a+chotai][b+chotaj]==(num+'0')) return false;
-            }
-        }
-        return true;
+    void solveSudoku(vector<vector<char>>& board) {
+        this->board = board;
+        this->ROW = board.size();
+        this->COL = board[0].size();
+        dfs(0, 0);
+        board = ans;
     }
 };
