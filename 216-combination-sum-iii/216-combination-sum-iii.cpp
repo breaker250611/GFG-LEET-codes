@@ -1,27 +1,25 @@
 class Solution {
 public:
-    vector<vector<int>> combinationSum3(int k, int n) {
-        vector<vector<int>>ans;
-        vector<int>nums;
-        for(int i=1;i<=9;i++) nums.push_back(i);
-        
-        combi(nums,k,n,0,ans,{},0);
-        return ans;
-    }
-    void combi(vector<int>&nums,int k,int target,int psf,vector<vector<int>>&ans,vector<int>temp,int i){
-        if(target==0&&psf==k){
-            ans.push_back(temp);
+    vector<vector<int>>ans;
+    void call(int k,int n,int i , vector<int>&daal){
+        if(n==0 and k==0){
+            ans.push_back(daal);
             return;
         }
-        else if((psf<k&&target==0))return;
-        else if(psf>k)return;
-        for(i;i<nums.size();i++){
-            if(i<=target){
-                temp.push_back(nums[i]);
-                combi(nums,k,target-nums[i],psf+1,ans,temp,i+1);
-                temp.pop_back();
+        if(n<=0 or k<=0) return;
+        
+        for(int j = i;j<=n;j++){
+            if(n-j>=0 and j/10==0){
+                daal.push_back(j);
+                call(k-1,n-j,j+1,daal);
+                daal.pop_back();
             }
-            else break;
         }
+    }
+    vector<vector<int>> combinationSum3(int k, int n) {
+        ans.clear();
+        vector<int>daal;
+        call(k,n,1,daal);
+        return ans;
     }
 };
