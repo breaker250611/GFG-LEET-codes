@@ -1,29 +1,33 @@
 class Solution {
-public:
-    vector<vector<int>> combine(int n, int k) {
-        vector<int>nums;
-        for(int i = 1;i<=n;i++){
-            nums.push_back(i);
-        }
-        
-        vector<vector<int>>ans;
-        combination(0,nums,k,0,ans,{});
-        return ans;
-    }
-    void combination(int i,vector<int>&nums,int k,int csf,vector<vector<int>>&ans,vector<int>temp){
-        if(csf==k){
+    public:
+    vector<int> temp;
+    vector<vector<int>> ans;
+    int n, k;
+
+    void fun(int i) {
+        if (temp.size() == k) {
             ans.push_back(temp);
             return;
-            
         }
-        if ((nums.size()-i+1) < (k-csf))
-            return;
         
-        for(i;i<nums.size();i++){
-            
-            temp.push_back(nums[i]);
-            combination(i+1,nums,k,csf+1,ans,temp);
-            temp.pop_back();
-        }
+        if (i > n) return;
+        
+        // elements currently < elements needed.
+        if ((n - i + 1) < (k - temp.size())) return;
+
+        fun(i + 1); 
+        
+        temp.push_back(i); 
+        fun(i + 1); 
+        temp.pop_back();
+    }
+    vector<vector<int>> combine(int n, int k) {
+        this->n = n; 
+        this->k = k; 
+
+        fun(1);
+
+        return ans;
+
     }
 };
