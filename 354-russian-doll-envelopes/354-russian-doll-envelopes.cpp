@@ -1,26 +1,26 @@
-static bool cmp(vector<int>&a,vector<int>&b){
-    if(a[0]==b[0]){
-        return a[1]>b[1];
-    }
-    else return a[0]<b[0];
+static bool comparator(const vector<int>& one, const vector<int>& two) {
+    if (one[0] == two[0]) return one[1] > two[1];
+    return one[0] < two[0];
 }
+
 class Solution {
 public:
-    
-    int maxEnvelopes(vector<vector<int>>& e) {
-         int n = e.size();
-        sort(e.begin() , e.end() , cmp);
-        vector<int> t;
-        for (int i = 0 ; i<e.size() ; i++){
-            auto it = lower_bound(t.begin() , t.end() , e[i][1]);
-            
-            if (it == t.end()){
-                t.push_back(e[i][1]);
-            }
-            else{
-               t[it-t.begin()] = e[i][1];   
+    int maxEnvelopes(vector<vector<int>>& envelopes) {
+        int n = envelopes.size();
+        sort(envelopes.begin(), envelopes.end(), comparator);
+        
+        vector<int> arr;
+        
+        for (int i = 0; i < n; i++) {
+            int current = envelopes[i][1]; 
+            auto it = lower_bound(arr.begin(), arr.end(), current);
+            if (it == arr.end()) {
+                arr.push_back(current);
+            } else {
+                arr[it - arr.begin()] = current;
             }
         }
-        return t.size();
+        
+        return arr.size();
     }
 };
