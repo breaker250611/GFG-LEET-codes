@@ -1,28 +1,35 @@
 class Solution {
 public:
-    vector<vector<int>>ans;
-    set<vector<int>>st;
-    void call(vector<int>&nums,int i , vector<int>temp){
-        if(temp.size()>1){
-            st.insert(temp);
+    void solve(vector<int>&cur, vector<vector<int>>& ans, vector<int>& nums, int i){
+        if(i==nums.size()){
+            if(cur.size()>=2) ans.push_back(cur);
+            return;
         }
-        
-        if(i==nums.size())return;
-        
-        for(int k = i;k<nums.size();k++){
-            if(temp.size()>0 and temp.back()>nums[k])continue;
-            if(k>i and nums[k]==nums[k-1]) continue;
-            temp.push_back(nums[k]);
-            call(nums,k+1,temp);
-            temp.pop_back();
+        if(nums[i]==cur[cur.size()-1]){
+            cur.push_back(nums[i]);
+            solve(cur,ans,nums,i+1);
+            cur.pop_back();
+            return;
+        }
+        solve(cur,ans,nums,i+1);
+        if(nums[i]<cur[cur.size()-1]){
+            return;
+        }
+        else{
+            cur.push_back(nums[i]);
+            solve(cur,ans,nums,i+1);
+            cur.pop_back();
         }
     }
     
     vector<vector<int>> findSubsequences(vector<int>& nums) {
-     
-        
-          call(nums,0,{});
-        for(auto &it:st) ans.push_back(it);
+        int n = nums.size();
+        vector<vector<int>> ans;
+        for(int i = 0; i<n; i++){
+            vector<int> cur;
+            cur.push_back(nums[i]);
+            solve(cur,ans,nums,i+1);
+        }
         return ans;
     }
 };
