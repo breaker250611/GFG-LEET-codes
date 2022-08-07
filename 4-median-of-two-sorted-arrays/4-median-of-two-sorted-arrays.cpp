@@ -16,10 +16,10 @@ public:
       
             int upr = mid;
             int neech = first-mid;
-            cout<<neech<<endl;
+            // cout<<neech<<endl;
             int l1 = (upr==0)?INT_MIN:nums1[upr-1];
             int l2 = (neech==0)?INT_MIN:nums2[neech-1];
-                      cout<<"check"<<endl;
+                      // cout<<"check"<<endl;
             int r1 = (upr==nums1.size())?INT_MAX:nums1[upr];
             int r2 = (neech==nums2.size())?INT_MAX:nums2[neech];
             
