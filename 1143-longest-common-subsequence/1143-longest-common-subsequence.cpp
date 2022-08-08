@@ -28,7 +28,7 @@ public:
         n = s.size(); 
         m = t.size(); 
         
-        dp.resize(n + 1, vector<int>(m + 1, -1));
+        dp.resize(n, vector<int>(m ,-1));
         
         return fun(0, 0);
         
