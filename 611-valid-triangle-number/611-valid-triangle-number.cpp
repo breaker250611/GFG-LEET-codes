@@ -22,8 +22,8 @@ long long C(int n, int r) {
         while(i<nums.size() and nums[i] == 0)i++;
         int total = C(nums.size()-i,3);
         int tutu = i;
-        cout<<"tutu "<<tutu<<endl;
-        cout<<"teota "<<total<<endl;
+        // cout<<"tutu "<<tutu<<endl;
+        // cout<<"teota "<<total<<endl;
         for(int i = tutu;i<nums.size();i++){
             for(int j = tutu;j<i;j++){
                 int temp = nums[i]+nums[j];
