@@ -1,70 +1,50 @@
 class Solution {
 public:
-    vector<vector<int>> lcs(string& s1, string &s2)
-    {
-        vector<vector<int>> dp(s1.size() + 1, vector<int>(s2.size() + 1, 0));
+    string shortestCommonSupersequence(const string &str1, const string &str2) {
+        int n = str1.size(); 
+        int m = str2.size();
         
-        for(int idx = 0; idx < s1.size() + 1; idx++)
-            dp[idx][0] = 0;
-        
-        for(int idx = 0; idx < s2.size() + 1; idx++)
-            dp[0][idx] = 0;
-        
-        for(int row = 1; row < s1.size() + 1; row++)
-        {
-            for(int col = 1; col < s2.size() + 1; col++)
-            {
-                if(s1[row - 1] == s2[col - 1])
-                    dp[row][col] = 1 + dp[row - 1][col - 1];
-                
-                else
-                    dp[row][col] = max(dp[row - 1][col] , dp[row][col - 1]);
+        vector<vector<int>> dp(n + 1, vector<int>(m + 1, 0));
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= m; j++) {
+                if (str1[i - 1] == str2[j - 1]) {
+                    dp[i][j] = dp[i - 1][j - 1] + 1;
+                } else {
+                    dp[i][j] = max(dp[i - 1][j], dp[i][j - 1]);
+                }
             }
         }
         
-        return dp;
-    }
-    
-    string shortestCommonSupersequence(string& str1, string &str2)
-    {
-         vector<vector<int>> dp = lcs(str1, str2);
-   
-         int idx1 = str1.size(), idx2 = str2.size();
-         string ans = "";
+        int i = n; 
+        int j = m; 
         
-         while(idx1 > 0 and idx2 > 0)
-         {
-             if(str1[idx1 - 1] == str2[idx2 - 1]){
-                 ans.push_back(str1[idx1 - 1]);
-                 idx1--; idx2--; 
-             }
-             
-             else{
-                 if(dp[idx1 - 1][idx2] > dp[idx1][idx2 - 1]){
-                     ans.push_back(str1[idx1 - 1]);
-                     idx1 --;
-                 }
-                 else{
-                     ans.push_back(str2[idx2 - 1]);
-                     idx2--;
-                 }
-             }
-         }
+        string ans;
+        while (i > 0 && j > 0) {
+            if (str1[i - 1] == str2[j - 1]) {
+                ans.push_back(str1[i - 1]);
+                i --; 
+                j --;
+            } else {
+                if (dp[i - 1][j] > dp[i][j - 1]) {
+                    ans.push_back(str1[i - 1]);
+                    i --;
+                } else {
+                    ans.push_back(str2[j - 1]);
+                    j --;
+                }
+            }
+        }
         
-         while(idx1 != 0)
-         {
-             ans.push_back(str1[idx1 - 1]);
-             idx1--;
-         }
+        while (i > 0) {
+            ans.push_back(str1[i - 1]);
+            i --;
+        }
         
-          while(idx2 != 0)
-         {
-             ans.push_back(str2[idx2 - 1]);
-             idx2--;
-         }
-        
-         reverse(ans.begin(), ans.end());
-        
-         return ans;
+        while (j > 0) {
+            ans.push_back(str2[j - 1]);
+            j --;
+        }
+        reverse (ans.begin(), ans.end());
+        return ans;
     }
 };
