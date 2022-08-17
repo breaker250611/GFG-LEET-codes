@@ -1,5 +1,6 @@
 class Solution {
 public:
+    // bas us side ko eliminate kar rahe jidhar nhi ban sakta 
     int findPeakElement(vector<int>& nums) {
         int ans = nums[0];
         
