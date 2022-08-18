@@ -1,26 +1,24 @@
 class Solution {
 public:
-    int longestSubarray(vector<int>& nums, int k) {
-        map<int,int>mp;
-        
-        
-        int start = 0;
-        int slow = 0;
-        int ans = 1;
-        for(slow = 0;slow<nums.size();slow++){
-            mp[nums[slow]]++;
-            int chota = mp.begin()->first;
-            int bada = mp.rbegin()->first;
+    int longestSubarray(vector<int>& nums, int limit) {
+       map<int,int>st;
+        int lo = 0;
+        int maxi = 1;
+        for(int i = 0;i<nums.size();i++ ){
+            st[nums[i]]++;
+
+            int diff = abs(st.begin()->first -st.rbegin()->first );
             
-            while(bada-chota > k and start <slow){
-                mp[nums[start]]--;
-                if(mp[nums[start]]==0) mp.erase(nums[start]);
-                start++;
-                chota = mp.begin()->first;
-                bada = mp.rbegin()->first;
-            }
-            if(bada-chota <=k) ans = max(ans,abs(start-slow)+1);
+                while(diff>limit and st.size()){
+                        st[nums[lo]]--;
+                    if(st[nums[lo]]==0)st.erase(nums[lo]);
+                    diff =abs(st.begin()->first -st.rbegin()->first );
+                    lo++;
+                }
+            maxi = max(maxi,i-lo+1);
+                
+            
         }
-        return ans;
+        return maxi;
     }
 };
