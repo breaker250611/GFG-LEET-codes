@@ -15,7 +15,7 @@ public:
                 temp =(temp%mod + call(locations,i,finish,fuel-minus)%mod)%mod;
             }
             }
-            return temp;
+            // return temp;
         }
         if(start==locations.size() or fuel<0) return 0;
         
@@ -33,11 +33,5 @@ public:
     int countRoutes(vector<int>& locations, int start, int finish, int fuel) {
         dp.resize(locations.size()+1,vector<int>(fuel+1,-1));
         return call(locations,start,finish,fuel);
-        int count = 0;
-        for(int i = 0;i<=fuel;i++){
-            
-            if(dp[finish][i] !=-1) count +=dp[finish][i];
-        }
-        return count;
     }
 };
