@@ -22,10 +22,10 @@ class Solution {
                 l ++;
             }
 
-            count += (r - l);
+            count += (r - l+1);
         }
 
 
-        return int(n * (n - 1)/2 - count);
+        return int(n * (n + 1)/2 - count);
     }
 };
