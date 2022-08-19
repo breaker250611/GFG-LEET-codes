@@ -9,7 +9,7 @@ public:
             int temp = nums[i];
             if(temp==0){
                 count0++;
-                while(count0>k and lo<=i){
+                while(count0>k and lo<=nums.size()){
                     if(nums[lo]==0)count0--;
                     lo++;
                 }
