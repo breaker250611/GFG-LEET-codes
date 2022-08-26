@@ -1,29 +1,35 @@
 class Solution {
 public:
-    int mxans = 0;
+    int ans = 0;
+    vector<vector<int>> grid;
+    void call(int i ,int j ,int sum){
+            ans = max(ans,sum);
+        if(i<0 or j<0 or j>=grid[0].size() or i>=grid.size() or (grid[i][j]==0)) return;
+        int temp = grid[i][j];
+        grid[i][j] = 0;
+            // cout<<"check";
+        call(i+1,j,temp+sum);
+        call(i,j+1,temp+sum);
+        call(i,j-1,temp+sum);
+        call(i-1,j,temp+sum);
+        grid[i][j] = temp;
+        return;
+    }
     int getMaximumGold(vector<vector<int>>& grid) {
-        mxans = 0;
+        ans = 0;
+        this->grid = grid;
         for(int i = 0;i<grid.size();i++){
-            for(int j = 0;j<grid[0].size();j++){
+            for(int j =0;j<grid[0].size();j++){
                 if(grid[i][j]!=0){
-                    holihai(grid,i,j,0);
+                    int temp = grid[i][j];
+                    // grid[i][j] = 0;
+                    call(i,j,0);
+    
+                    // grid[i][j] = temp;
                 }
             }
         }
-        return mxans;
-    }
-    void holihai(vector<vector<int>>&grid,int i,int j ,int ans){
         
-        if(i<0||j<0||i>=grid.size()||j>=grid[0].size()||grid[i][j]==0) return;
-        
-        ans+=grid[i][j];
-        mxans = max(ans,mxans);
-        int temp = grid[i][j];
-        grid[i][j]=0;
-        holihai(grid,i+1,j,ans);
-        holihai(grid,i-1,j,ans);
-        holihai(grid,i,j-1,ans);
-        holihai(grid,i,j+1,ans);    
-    grid[i][j]=temp;
+        return ans;
     }
 };
