@@ -2,20 +2,21 @@ class Solution {
 public:
     int countSquares(vector<vector<int>>& matrix) {
         int count = 0;
-        int n = matrix.size();
-        int m = matrix[0].size();
-        for(int i = 0;i<n;i++){
-            for(int j =0;j<m;j++){
-                if(matrix[i][j]==1){
-                    if(i==0||j==0) count +=matrix[i][j];
-                else{
-                    matrix[i][j] = max(matrix[i][j],min({matrix[i][j-1],matrix[i-1][j],matrix[i-1][j-1]})+matrix[i][j]);
-                    count += matrix[i][j];
+        for(int i = matrix.size()-1;i>=0;i--){
+            for(int j = matrix[0].size()-1;j>=0;j--){
+                if(i==matrix.size()-1 or j == matrix[0].size()-1){
+                    count +=matrix[i][j];
                 }
+                else if(matrix[i][j]!=0){
+                    matrix[i][j] = matrix[i][j] + min({matrix[i+1][j] , matrix[i][j+1],matrix[i+1][j+1]});
+                    count +=matrix[i][j];
                 }
             }
         }
-
-        return count;
+        // for(auto &it:matrix){
+        //     for(auto &i:it)cout<<i<<" ";
+        // cout<<endl;
+        // }
+            return count;
     }
 };
