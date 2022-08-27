@@ -1,5 +1,6 @@
 class Solution {
 public:
+    // prefix sum hai like chaaro dishao se dekhlo
     int orderOfLargestPlusSign(int n, vector<vector<int>>& mines) {
         vector<vector<int>>mat(n,vector<int>(n,1));
         for(auto &it:mines){
