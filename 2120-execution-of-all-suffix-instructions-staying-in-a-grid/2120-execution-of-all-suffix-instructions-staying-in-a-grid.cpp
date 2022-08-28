@@ -22,7 +22,7 @@ public:
         }
         return 0;
     }
-    vector<int> executeInstructions(int n, vector<int>& startPos, string s) {
+    vector<int> executeInstructions(int n, vector<int>& startPos, string &s) {
         this-> n = n;
         vector<int>ans;
             int x = startPos[0];
