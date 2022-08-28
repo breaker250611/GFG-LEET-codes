@@ -36,10 +36,10 @@ public:
             }
             dp.push_back(sp);
         }
-        for(auto&it:dp){
-            for(auto &i:it)cout<<i<<" ";
-                cout<<endl;
-        }
+        // for(auto&it:dp){
+        //     for(auto &i:it)cout<<i<<" ";
+        //         cout<<endl;
+        // }
         double ans = dp[query_row][query_glass];
         return ans = ans>1?1:ans;
     }
