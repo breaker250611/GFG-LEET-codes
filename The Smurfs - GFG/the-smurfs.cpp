@@ -6,7 +6,10 @@ using namespace std;
 
 // } Driver Code Ends
 // User function Template for C++
-
+// chote mai tod do mtlb r b g hai to r b ko solve karo g ko r and b mai adjust karo
+// order matter nhi kar raha number matter kar rahe 
+// agar do element dekh rahe hai and dono even hai to 2 result aaega humesha
+// nhi to 1 aaega but wo condition dekhlena jab saare ek hi color ke ho
 class Solution{
 public:
     int findMin(int n, char a[]){
