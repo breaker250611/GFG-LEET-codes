@@ -1,3 +1,5 @@
+// memo
+//prefix sum lagake pehle saare pizza ke count rakhliya and fir simple recursion pe memo
 class Solution {
 public:
     const long long int mod = 1e9+7;
