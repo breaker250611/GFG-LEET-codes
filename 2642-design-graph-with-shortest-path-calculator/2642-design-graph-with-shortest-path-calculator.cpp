@@ -14,7 +14,7 @@ public:
         vector<int> dis(105 , INT_MAX);
         dis[x] = 0;
         priority_queue<pair<int , int> , vector<pair<int , int>> , greater<pair<int , int>>> pq;
-        
+        vector<bool>vis(105,false);
         pq.push({0 , x});
         while(!pq.empty()){
         
@@ -22,16 +22,18 @@ public:
             auto node  = pq.top().second;
             pq.pop();
             // if (D > dis[node]) continue;
-            
+            if(vis[node])continue;
+            vis[node] = true;
+            dis[node] = D;
             for (auto x : adj[node]){
                 
                 int u = x.first;
                 int w = x.second;
                 
-                if (dis[u] > dis[node] + w)
+               if(vis[u]==false)
                 {
-                    dis[u] = dis[node] + w;
-                    pq.push({dis[u] , u});
+                   int temp = dis[node] + w;
+                    pq.push({temp , u});
                 }                
             }
         }
