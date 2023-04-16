@@ -21,7 +21,7 @@ public:
             auto D = pq.top().first;
             auto node  = pq.top().second;
             pq.pop();
-            if (D > dis[node]) continue;
+            // if (D > dis[node]) continue;
             
             for (auto x : adj[node]){
                 
