@@ -1,79 +1,80 @@
 class Solution {
 public:
-        bool check(vector<vector<char>>&board,int i,int j,int value){
-        // us column mai check karliya
-        for(int x = 0;x<board.size();x++ ){
-            if(board[x][j]-'0'==value){
+    vector<vector<char>>ans;
+    void solveSudoku(vector<vector<char>>& board) {
+        solve(board,0,0);
+        board = ans;
+        
+    }
+    
+    
+    void solve(vector<vector<char>>&board , int i , int j){
+        
+        // base 
+        if(i==9){
+            ans = board;
+            return;
+        }
+        
+        
+        
+        // calls
+        
+        int nayai = i;
+        int nayaj= j;
+        if(j==board[0].size()-1){
+            nayaj = 0;
+            nayai = nayai+1;
+        }
+        else{
+            // nayai = i;
+            nayaj = nayaj+1;
+        }
+        
+        
+        if(board[i][j]!='.'){
+            solve(board,nayai,nayaj);
+        }
+        else{
+            for(int val = 1;val<=9;val++){
+                if(check(board,i,j,val)){
+                    board[i][j] = val+'0';
+                    solve(board,nayai,nayaj);
+                    board[i][j]='.';
+                }
+            }
+        }
+        
+    }
+    bool check(vector<vector<char>>&board,int i ,int j, int val){
+        
+        // for row checking
+        
+        for(int y = 0;y<9;y++){
+            if(board[i][y]==val+'0'){
+                return false;
+            }
+        }
+        // for column
+        
+        for(int x = 0;x<9;x++){
+            if(board[x][j]==val+'0'){
                 return false;
             }
         }
         
-        // us row mai check
-        for(int y = 0;y<board[0].size();y++){
-            if(board[i][y]-'0'==value){
-                return false;
-            }
-        }
+        // 3*3 wale box mia 
         
-        
-        // 3*3 ke block mai check
-        
-        int blocki = i/3*3;
-        int blockj = j/3*3;
-        
+        int starti = i/3*3;
+        int startj = j/3*3;
         
         for(int x = 0;x<3;x++){
-            for(int y = 0 ;y<3;y++){
-                if(board[blocki+x][blockj+y]==value+'0'){
+            for(int y = 0;y<3;y++){
+                if(board[starti+x][startj+y]==val+'0'){
                     return false;
                 }
             }
         }
         return true;
     }
-    vector<vector<char>>ans;
-    // bool flag = false;
-    void solveSudoku(vector<vector<char>>& board) {
-        // flag = false;
-            solve(board,0,0);
-            board = ans;
-    }
-    
-    
-    void solve(vector<vector<char>>&board,int i ,int j){
-        if(i==board.size()){
-            ans = board;
-            // flag = true;
-            return;
-        }
-        
-        int newi=0;
-        int newj=0;
-        
-        if(j==board[0].size()-1){
-            newi = i+1;
-            newj = 0;
-        }
-        else {
-            newi = i;
-            newj = j+1;
-        }
-        
-        if(board[i][j] != '.'){
-            // cout<<"ch"<<endl;
-            solve(board,newi,newj);
-        }
-        else{
-            for(int val = 1;val<=9;val++){
-                
-                if(check(board,i,j,val)){
-                    board[i][j] = val+'0';
-                    solve(board,newi,newj);
-                    board[i][j] = '.';
-                    // if(flag == true) return ;
-                }
-            }
-        }
-    }
-
 };
