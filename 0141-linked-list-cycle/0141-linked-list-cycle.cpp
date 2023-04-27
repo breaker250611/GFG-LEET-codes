@@ -12,7 +12,7 @@ public:
         ListNode* fast = head;
         ListNode* slow = head;
         
-        while(slow!=NULL and fast!=NULL and fast->next != NULL){
+        while(slow!=NULL && fast!=NULL && fast->next != NULL){
             fast = fast->next->next; //2x
             slow = slow->next;  // x
             if(fast==slow){
