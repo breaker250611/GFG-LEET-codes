@@ -10,26 +10,21 @@
  */
 class Solution {
 public:
-    ListNode* tail;
     ListNode* reverseList(ListNode* head) {
-    
+        ListNode* curr = head;
+        ListNode* Next;
+        ListNode* previous = NULL;
         
-        fun(head,nullptr);
-        head = tail;
+        
+        while(curr != NULL){
+            Next = curr->next;
+            curr->next = previous;
+            previous = curr;
+            curr =Next;
+        }
+        
+        head = previous;
         return head;
         
-    }
-    
-    
-    void fun(ListNode* curr,ListNode* peechla){
-        
-        if(curr==NULL){
-            return ;
-        }
-        if(curr->next ==NULL){
-            tail = curr;
-        }
-        fun(curr->next,curr);
-        curr->next = peechla;
     }
 };
