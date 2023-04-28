@@ -7,6 +7,7 @@
  *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
  * };
  */
+// node blocking
 class Solution {
 public:
     vector<int>ans;
