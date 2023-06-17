@@ -31,8 +31,8 @@ public:
             return dp[{i,prev}];
         }
         
-        long long int take = 2005;
-        long long int nottake = 2005;
+        long long int take = 2001;
+        long long int nottake = 2001;
         int ind = upper_bound(arr2.begin(),arr2.end(),prev)-arr2.begin();
         // ind--;
         // cout<<ind<<endl;
@@ -66,7 +66,7 @@ public:
         
         int ans =  call(arr1,array2,0,-1);
         // cout<<dp.size();
-        if(ans ==2005) ans = -1;
+        if(ans ==2001) ans = -1;
         return ans;
     }
 };
