@@ -1,2 +1,4 @@
-/* Write your T-SQL query statement below */
-Delete p1 from Person p1  where p1.id in (select p1.id from person p2 where p2.id < p1.id and p2.email = p1.email);  
+DELETE p1 FROM person p1,
+    person p2
+WHERE
+    p1.Email = p2.Email AND p1.Id > p2.Id
