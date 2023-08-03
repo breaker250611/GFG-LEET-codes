@@ -1,15 +1,7 @@
-select 
-    request_at as "Day",
-    round(
-        (sum(case when status = "cancelled_by_driver" or status = "cancelled_by_client" then 1 else 0 end) / count(status)), 2
-    ) as "Cancellation Rate"
-from
-    Trips
-where 
-    client_id not in (select users_id from Users where role = 'client' and banned ='Yes') 
-and 
-    driver_id not in (select users_id from Users where role = 'driver' and banned ='Yes') 
-and 
-    request_at >= "2013-10-01" and request_at <= "2013-10-03"
-group by 
-    request_at
+select request_at as day, cast(sum(case when status <> 'completed' then 1.0 else 0.0 end)/count(*) as decimal(10,2)) as 'cancellation rate' 
+from trips t inner join users rider on t.client_id = rider.users_id 
+inner join users driver on t.driver_id = driver.users_id
+where t.request_at between '2013-10-01' and '2013-10-03'
+and rider.banned = 'No'
+and driver.banned = 'No'
+group by request_at
