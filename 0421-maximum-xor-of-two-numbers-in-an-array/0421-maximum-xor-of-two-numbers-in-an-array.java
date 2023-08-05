@@ -77,7 +77,7 @@ class Solution {
         
         int max = 0;
         for(int a : nums){
-            int find = Integer.MAX_VALUE ^ a;
+            int find = ~a;
             int b = trie.query(find);
             max = Math.max(max, a ^ b);
         }
