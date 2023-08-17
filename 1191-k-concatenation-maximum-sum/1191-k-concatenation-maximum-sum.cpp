@@ -29,7 +29,7 @@ public:
             return maxsub;
         }
         else{
-            long long int ans = (maxsub%MOD*1LL + (1LL*sum*(k-2))%MOD)%MOD;
+            int ans = (maxsub%MOD*1LL + (1LL*sum*(k-2))%MOD)%MOD;
             return ans;
         }
         return 0;
