@@ -1,5 +1,6 @@
 class Solution {
 public:
+//https://leetcode.com/problems/largest-1-bordered-square/discuss/345265/c%2B%2B-beats-100-(both-time-and-memory)-concise-with-algorithm-and-image
     int largest1BorderedSquare(vector<vector<int>>& grid) {
         vector<vector<int>>dph(grid.size(),vector<int>(grid[0].size(),0));
         vector<vector<int>>dpv(grid.size(),vector<int>(grid[0].size(),0));
